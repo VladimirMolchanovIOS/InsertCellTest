@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="wLk-2E-nIE" customClass="OpenHoursScheduleCell" customModule="InsertCellTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wLk-2E-nIE" id="9ug-k6-nBA">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="A6K-O7-hwq">
+                        <rect key="frame" x="64" y="11" width="295" height="22"/>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="A6K-O7-hwq" firstAttribute="top" secondItem="9ug-k6-nBA" secondAttribute="topMargin" id="0wj-Or-sm8"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="A6K-O7-hwq" secondAttribute="trailing" id="jzs-Ih-R5w"/>
+                    <constraint firstItem="A6K-O7-hwq" firstAttribute="leading" secondItem="9ug-k6-nBA" secondAttribute="leading" constant="64" id="sHm-Ui-Sih"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="A6K-O7-hwq" secondAttribute="bottom" id="zBQ-2q-bHV"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.81883177066880519" green="1" blue="0.49953176093063745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="containerStackView" destination="A6K-O7-hwq" id="A1o-E0-MVF"/>
+            </connections>
+            <point key="canvasLocation" x="-562" y="-61"/>
+        </tableViewCell>
+    </objects>
+</document>

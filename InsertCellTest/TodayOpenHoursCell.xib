@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="TodayOpenHoursCell" customModule="InsertCellTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⏱" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vas-1Z-zG6">
+                        <rect key="frame" x="12" y="10" width="40" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="YEV-Uj-1my"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Закроется в 21:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vJ-nM-fAf">
+                        <rect key="frame" x="64" y="11.5" width="150" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="EXL-Az-4fe"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="▲" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBb-oP-cTM">
+                        <rect key="frame" x="278" y="12" width="30" height="20"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="Aa2-YB-GVV"/>
+                            <constraint firstAttribute="height" constant="20" id="vOm-Oc-IIk"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="0vJ-nM-fAf" firstAttribute="leading" secondItem="vas-1Z-zG6" secondAttribute="trailing" constant="12" id="5rF-Ol-5Ni"/>
+                    <constraint firstItem="vas-1Z-zG6" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="H3p-mf-3mG"/>
+                    <constraint firstAttribute="trailing" secondItem="aBb-oP-cTM" secondAttribute="trailing" constant="12" id="JHD-8y-LaT"/>
+                    <constraint firstItem="0vJ-nM-fAf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="SG7-mP-yXk"/>
+                    <constraint firstItem="aBb-oP-cTM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="YrI-l6-aHe"/>
+                    <constraint firstItem="vas-1Z-zG6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="qKl-OK-4We"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="selStateIconLbl" destination="aBb-oP-cTM" id="LAK-sv-hjA"/>
+                <outlet property="whenClosedTodayLbl" destination="0vJ-nM-fAf" id="Hq4-sj-khf"/>
+            </connections>
+            <point key="canvasLocation" x="-562" y="139"/>
+        </tableViewCell>
+    </objects>
+</document>
