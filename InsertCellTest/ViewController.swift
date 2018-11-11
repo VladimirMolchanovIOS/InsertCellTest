@@ -31,8 +31,10 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath == IndexPath(row: 3, section: 0) {
-            if let numberOfLines = (presenter.sections[0].items[3] as? OpenHours)?.openHoursSchedule.count {
+        let item = presenter.sections[indexPath.section].items[indexPath.row]
+        
+        if item.type == .openHoursSchedule {
+            if let numberOfLines = (item.model as? OpenHours)?.openHoursSchedule.count {
                 let testLabel = UILabel()
                 testLabel.text = "0,"
                 testLabel.sizeToFit()
@@ -65,8 +67,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            let numberOfItems = presenter.sections[0].items.count
+        let sectionModel = presenter.sections[section]
+        if sectionModel.type == .contacts {
+            let numberOfItems = sectionModel.items.count
             return openHoursSectionExpanded ? numberOfItems : numberOfItems - 1
         }
         return presenter.sections[section].items.count
@@ -76,23 +79,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let sectionModel = presenter.sections[indexPath.section]
         let item = sectionModel.items[indexPath.row]
         
-        switch sectionModel.type {
-        case .contacts:
-            switch indexPath.row {
-            case 2:
-                let cell = tableView.dequeueReusableCell(withIdentifier: TodayOpenHoursCell.IDENTIFIER, for: indexPath) as! TodayOpenHoursCell
-                cell.setupCell(withModel: item as! OpenHours)
-                return cell
-            case 3:
-                let cell = tableView.dequeueReusableCell(withIdentifier: OpenHoursScheduleCell.IDENTIFIER, for: indexPath) as! OpenHoursScheduleCell
-                cell.setupCell(withModel: item as! OpenHours)
-                return cell
-            default:
-                let cell = UITableViewCell()
-                cell.backgroundColor = UIColor(red: CGFloat.random(in: 0.0...1.0), green: CGFloat.random(in: 0.0...1.0), blue: CGFloat.random(in: 0.0...1.0), alpha: 1.0)
-                return cell
-            }
-        case .services:
+        switch item.type {
+        case .todayOpenHours:
+            let cell = tableView.dequeueReusableCell(withIdentifier: TodayOpenHoursCell.IDENTIFIER, for: indexPath) as! TodayOpenHoursCell
+            cell.setupCell(withModel: item.model as! OpenHours)
+            return cell
+        case .openHoursSchedule:
+            let cell = tableView.dequeueReusableCell(withIdentifier: OpenHoursScheduleCell.IDENTIFIER, for: indexPath) as! OpenHoursScheduleCell
+            cell.setupCell(withModel: item.model as! OpenHours)
+            return cell
+        default:
             let cell = UITableViewCell()
             cell.backgroundColor = UIColor(red: CGFloat.random(in: 0.0...1.0), green: CGFloat.random(in: 0.0...1.0), blue: CGFloat.random(in: 0.0...1.0), alpha: 1.0)
             return cell
@@ -102,7 +98,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if presenter.sections[indexPath.section].type == .contacts && indexPath.row == 2 {
+        if presenter.sections[indexPath.section].items[indexPath.row].type == .todayOpenHours {
             openHoursSectionExpanded.toggle()
             let openHoursScheduleIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
             if openHoursSectionExpanded {

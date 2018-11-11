@@ -15,14 +15,29 @@ struct CompanyTableSection {
     }
     
     let type: SectionType
-    var items: [Any] = []
+    var items: [CompanyTableItem] = []
+}
+
+struct CompanyTableItem {
+    enum ItemType {
+        case address
+        case phone
+        case todayOpenHours
+        case openHoursSchedule
+        case service
+        
+        // var cellIdentifier: String
+    }
+    
+    let type: ItemType
+    var model: Any
 }
 
 class Presenter {
     
     let company = Company.init(address: "Nevsky prospekt 1",
                                phone: "+79219234736",
-                               openHours: mockOpenHours3,
+                               openHours: mockOpenHours1,
                                services: ["Завивка", "Навивка"])
     
     var sections = [CompanyTableSection]()
@@ -33,15 +48,16 @@ class Presenter {
     }
     
     func setupContactsSection() {
-        let addressItem = company.address
-        let phoneItem = company.phone
-        let openHoursItem = company.openHours
+        let addressItem = CompanyTableItem(type: .address, model: company.address)
+        let phoneItem = CompanyTableItem(type: .phone, model: company.phone)
+        let todayOpenHoursItem = CompanyTableItem(type: .todayOpenHours, model: company.openHours)
+        let openHoursScheduleItem = CompanyTableItem(type: .openHoursSchedule, model: company.openHours)
         
-        sections.append(CompanyTableSection(type: .contacts, items: [addressItem, phoneItem, openHoursItem, openHoursItem]))
+        sections.append(CompanyTableSection(type: .contacts, items: [addressItem, phoneItem, todayOpenHoursItem, openHoursScheduleItem]))
     }
     
     func setupServicesSection() {
-        let servicesItems = company.services
+        let servicesItems = company.services.map { CompanyTableItem(type: .service, model: $0)}
         sections.append(CompanyTableSection(type: .services, items: servicesItems))
     }
 }
